@@ -1,13 +1,11 @@
-﻿Imports DevExpress.Xpf.Map
+Imports DevExpress.Xpf.Map
 Imports System
-Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.Globalization
-Imports System.Linq
-Imports System.Text
 Imports System.Windows.Data
 
 Namespace ShowToolTips
+
     Friend Class MapItemPopulationAttributeToStringTypeConverter
         Implements IValueConverter
 
@@ -20,16 +18,10 @@ Namespace ShowToolTips
                 item = title.MapShape
             End If
 
-            If item Is Nothing Then
-                Return Nothing
-            End If
-
+            If item Is Nothing Then Return Nothing
             Dim attr = item.Attributes("POP_EST")
-            If attr Is Nothing Then
-                Return Nothing
-            End If
-
-            Return System.Math.Round(CDbl(attr.Value) / 1000000, 2)
+            If attr Is Nothing Then Return Nothing
+            Return Math.Round(CDbl(attr.Value) / 1000000, 2)
         End Function
 
         Public Function ConvertBack(ByVal value As Object, ByVal targetType As Type, ByVal parameter As Object, ByVal culture As CultureInfo) As Object Implements IValueConverter.ConvertBack
@@ -49,15 +41,9 @@ Namespace ShowToolTips
                 item = title.MapShape
             End If
 
-            If item Is Nothing Then
-                Return Nothing
-            End If
-
+            If item Is Nothing Then Return Nothing
             Dim attr = item.Attributes("GDP_MD_EST")
-            If attr Is Nothing Then
-                Return Nothing
-            End If
-
+            If attr Is Nothing Then Return Nothing
             Return attr.Value
         End Function
 
